@@ -1,0 +1,75 @@
+
+server:
+  port: 8585
+ 
+
+ 
+ 
+ 
+eureka:
+  client:
+    register-with-eureka: true  
+    fetch-registry: true
+    
+    service-url:
+      defaultZone:  http://localhost:8761/eureka/
+
+
+  instance:
+    hostname: localhost
+    
+    
+    
+    
+    
+spring:
+  application:
+    name: API-GATEWAY    
+    
+    
+    
+  cloud:
+    gateway:
+      routes:
+      - id:  USER-SERVICE                       #http://localhost:8282/v1/user
+        uri: lb://USER-SERVICE
+        predicates:
+        - Path=/v1/user/**
+       
+       # filters:
+       # - name: CircuitBreaker
+       #   args:
+       #     name: USER-SERVICE
+       #     fallbackuri: forward:/userServiceFallBack
+               
+           
+     
+   
+     
+          
+    
+        
+      - id: DEPARTMENT-SERVICE                       #http://localhost:8181/v1/department
+        uri: lb://DEPARTMENT-SERVICE
+        predicates:
+        - Path=/v1/department/**
+      #  filters:
+      #  - name: CircuitBreaker
+       #   args:
+        #    name: DEPARTMENT-SERVICE
+         #   fallbackuri: forward:/departmentServiceFallBack
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    

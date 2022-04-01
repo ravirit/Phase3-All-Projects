@@ -1,0 +1,57 @@
+@Controller  // spring web mvc
+public class MyController{
+
+	@RequestMapping(value="/get",method=RequestMethod.GET)
+	@ResponseBody
+	public String get(){
+
+		return "hi friends";
+	}
+
+
+}
+-----------------------------------------------------
+
+@RestController  // spring rest mvc
+public class MyController{
+
+	@RequestMapping(value="/get",method=RequestMethod.POST)
+	
+	public String get(){
+
+		return "hi friends";
+	}
+
+
+}
+
+
+@RequestMapping(value="/get",method=RequestMethod.GET)
+@RequestMapping(value="/post",method=RequestMethod.POST)
+@RequestMapping(value="/put",method=RequestMethod.PUT)
+@RequestMapping(value="/remove",method=RequestMethod.DELETE)
+
+
+@RestController =  Controller + ResponseBody
+
+@GetMapping("/get")
+@PostMapping("/post")
+@PutMapping("/put")
+@DeleteMapping("/delete")
+
+REST API ---> url
+
+Http methods in Repositories
+
+save()  --> for insert and update
+findById() --> to get one record by id
+deleteById() --> to delete one record by id
+findAll() --> to get all records from DB
+
+
+
+
+
+
+
+

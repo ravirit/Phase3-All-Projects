@@ -1,0 +1,27 @@
+Apache Kafka with Zookeeper
+
+Steps:
+1. Download and unzip Apache kafka 0.10 version from kafka.apache.org/download
+
+2.Open cmd prompt in kafka folder where bin is visible (outside) 
+
+3. Start Zookeeper server and read properties file copy below path in cmd prompt
+
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+4. start apache kafka server and read properties file copy below path in new cmd prompt
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+5. open new cmd prompt and start topic(new instance for kafka) use below command
+
+.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic java-topic
+
+6. create producer in new command prompt
+
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic java-topic
+
+7. create consumer in new command prompt
+
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic java-topic --from-beginning
+
+
